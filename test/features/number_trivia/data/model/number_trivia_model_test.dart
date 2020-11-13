@@ -18,6 +18,7 @@ void main() {
     expect(tModel, isA<NumberTrivia>());
   });
 
+  // test that event json response with integer will return model in integer or double also return model with integer
   group('fromJson', () {
     test('should return valid model when json number is an integer', () {
       // arrange
@@ -37,6 +38,7 @@ void main() {
       expect(numberTriviaModel, equals(tModel));
     });
   });
+
   // test toMap method
   group('toMap', () {
     test('should return Map containing the proper date', () {
@@ -53,4 +55,5 @@ void main() {
       expect(result, equals(expectedMap));
     });
   });
+
 }

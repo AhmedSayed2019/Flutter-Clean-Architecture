@@ -16,11 +16,8 @@ class NumberTriviaModel extends NumberTrivia {
   factory NumberTriviaModel.fromMap(Map<String, dynamic> json) =>
       NumberTriviaModel(
         text: json["text"],
-        number: (json["number"] as num).toInt(),
+        number: (json["number"] as num).toInt(), // cast number even double into integer
       );
 
-  Map<String, dynamic> toMap() => {
-        "text": text,
-        "number": number,
-      };
+  Map<String, dynamic> toMap() => {"text": text, "number": number};
 }

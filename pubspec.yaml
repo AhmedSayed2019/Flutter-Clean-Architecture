@@ -35,6 +35,9 @@ dependencies:
   # Value equality
   equatable: ^1.0.1
 
+  # Internet connection
+  data_connection_checker: ^0.3.4
+
 
 dev_dependencies:
   flutter_test:
