@@ -40,8 +40,7 @@ class NumberTriviaRepositoryImp implements NumberTriviaRepository {
       } on ServerException {
         return Left(ServerFailure());
       }
-    }
-    else {
+    } else {
       try {
         NumberTrivia numberTrivia = await localDataSource.getLastNumberTrivia();
         return Right(numberTrivia);
@@ -50,5 +49,4 @@ class NumberTriviaRepositoryImp implements NumberTriviaRepository {
       }
     }
   }
-
 }

@@ -10,8 +10,7 @@ void main() {
   final NumberTriviaModel tModel =
       NumberTriviaModel(text: "test text", number: 5);
 
-  test('NumberTriviaModel shoud be an instance of its entitiy (NumberTrivia)',
-      () {
+  test('NumberTriviaModel shoud be an instance of its entitiy (NumberTrivia)', () {
     // arrange => not needed
     // act => not needed
     // assert

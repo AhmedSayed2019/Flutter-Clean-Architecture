@@ -13,6 +13,7 @@ void main() {
     mockDataConnectionChecker = MockDataConnectionChecker();
     networkInfoImpl = new NetworkInfoImpl(mockDataConnectionChecker);
   });
+
   group('isConnected', () {
     test('should forward to the call to DataConnectionChecker.hasConnction',
         () async {
@@ -33,4 +34,5 @@ void main() {
       expect(result, testHasConnection);
     });
   });
+
 }

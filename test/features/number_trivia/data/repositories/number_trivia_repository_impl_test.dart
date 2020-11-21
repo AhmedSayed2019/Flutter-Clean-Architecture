@@ -156,6 +156,7 @@ void main() {
 
         expect(result, equals(Right(testEntity)));
       });
+
       test('should return CachFailure when no cached data', () async {
         // arrange
         when(mockNumberTriviaLocalDataSource.getLastNumberTrivia())
@@ -174,6 +175,7 @@ void main() {
         expect(result, equals(Left(CacheFailure())));
       });
     });
+
   });
 
 
