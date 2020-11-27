@@ -32,6 +32,9 @@ dependencies:
   # Functional programming thingies
   dartz: ^0.8.9
 
+  # Internet requests
+  http: ^0.12.2
+
   # Value equality
   equatable: ^1.0.1
 
