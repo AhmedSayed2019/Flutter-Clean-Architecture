@@ -23,6 +23,7 @@ main() {
     when(httpClient.get(any, headers: anyNamed('headers')))
         .thenAnswer((_) async => http.Response('Something went wrong!', 404));
   }
+
   void setupMockHttpClientSuccess200() {
     when(httpClient.get(any, headers: anyNamed('headers')))
         .thenAnswer((_) async => http.Response(fixture('trivia.json'), 200));
@@ -57,8 +58,9 @@ main() {
       // assert
       expect(result, equals(testNumberTriviaModel));
     });
+
     test('should return ServerException when response code not 200 (failure)',
-        () async {
+          () async {
       // arrange
           setupMockHttpClientFailure404();
       // act
@@ -68,7 +70,9 @@ main() {
       expect(
           () => call((testNumber)), throwsA(isInstanceOf<ServerException>()));
     });
+
   });
+
   group('getRandomNumberTrivia', () {
     NumberTriviaModel testNumberTriviaModel =
         NumberTriviaModel.fromJson(fixture('trivia.json'));
@@ -110,6 +114,7 @@ main() {
           () => call(), throwsA(isInstanceOf<ServerException>()));
     });
   });
+
 }
 
 
