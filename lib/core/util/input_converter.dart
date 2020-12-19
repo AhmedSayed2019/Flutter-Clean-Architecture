@@ -9,9 +9,9 @@ class InputConverter {
 
       return Right(integer);
     } on FormatException {
-      return Left(InvalidInputConverter());
+      return Left(InvalidInputFailure());
     }
   }
 }
 
-class InvalidInputConverter extends Failure {}
+class InvalidInputFailure extends Failure {}
