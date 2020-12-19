@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+import 'package:mycleanarchitecture/features/number_trivia/domain/entity/number_trivia.dart';
 
 abstract class NumberTriviaState extends Equatable {
   const NumberTriviaState();
@@ -16,8 +17,12 @@ class Loading extends NumberTriviaState {
 }
 
 class Loaded extends NumberTriviaState {
+  final NumberTrivia trivia;
+
+  Loaded({@required this.trivia});
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [trivia];
 }
 
 class Error extends NumberTriviaState {
