@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
 import 'package:mycleanarchitecture/core/error/failures.dart';
+import 'package:mycleanarchitecture/features/number_trivia/domain/entity/number_trivia.dart';
 import '../../../../core/util/input_converter.dart';
 import '../../domain/usecase/get_concrete_number_trivia.dart';
 import '../../domain/usecase/get_random_number_trivia.dart';
@@ -58,11 +60,13 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
 
         final failureOrTrivia =
             await getConcreteNumberTrivia(Params(number: 1));
-
-        yield failureOrTrivia.fold((failure) => Error(message: _mapFailureToMessage(failure)),
-            (numberTrivia) => Loaded(trivia: numberTrivia));
-
+        yield* _eitherLoadedOrErrorState(failureOrTrivia);
       });
+    } else if (event is GetTriviaForRandomNumber) {
+      yield Loading();
+
+      final failureOrTrivia = await getRandomNumberTrivia(NoParams());
+      yield* _eitherLoadedOrErrorState(failureOrTrivia);
     }
   }
 
@@ -75,5 +79,12 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
       default:
         return 'Unexpected error';
     }
+  }
+
+  Stream<NumberTriviaState> _eitherLoadedOrErrorState(
+      Either<Failure, NumberTrivia> failureOrTrivia) async* {
+    yield failureOrTrivia.fold(
+        (failure) => Error(message: _mapFailureToMessage(failure)),
+        (numberTrivia) => Loaded(trivia: numberTrivia));
   }
 }

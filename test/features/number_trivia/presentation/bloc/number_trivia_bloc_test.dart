@@ -61,7 +61,8 @@ void main() {
         () async {
       // arrange
       setUpMockInputConverterSuccess();
-
+      when(mockGetConcreteNumberTrivia(any))
+          .thenAnswer((realInvocation) async => Right(testNumberTrivia));
       // act
       bloc.add(GetTriviaForConcreteNumber(testNumberString));
       // it take some time for the bloc to execute the login inside mapEventToState()
@@ -96,6 +97,8 @@ void main() {
     test('should call getConcreteNumberTrivia usecase', () async {
       // arrange
       setUpMockInputConverterSuccess();
+      when(mockGetConcreteNumberTrivia(any))
+          .thenAnswer((realInvocation) async => Right(testNumberTrivia));
       // act
       bloc.add(GetTriviaForConcreteNumber(testNumberString));
       await untilCalled(mockGetConcreteNumberTrivia(any));
@@ -147,7 +150,65 @@ void main() {
 
       // act
       bloc.add(GetTriviaForConcreteNumber(testNumberString));
+    });
+  });
 
+  group('GetTriviaForRandomNumber', () {
+    final NumberTrivia testNumberTrivia =
+        NumberTrivia(number: 1, text: 'test text');
+
+    test('should call getRandomNumberTrivia usecase', () async {
+      // arrange
+      when(mockGetRandomNumberTrivia(any))
+          .thenAnswer((realInvocation) async => Right(testNumberTrivia));
+      // act
+      bloc.add(GetTriviaForRandomNumber());
+      await untilCalled(mockGetRandomNumberTrivia(any));
+      // assert
+      verify(mockGetRandomNumberTrivia(NoParams()));
+    });
+
+    test('should emmit [Loading(), Loaded()] when data gotten successfully',
+        () {
+      //arrange
+
+      when(mockGetRandomNumberTrivia(any))
+          .thenAnswer((realInvocation) async => Right(testNumberTrivia));
+
+      //assert later
+      final expects = [Loading(), Loaded(trivia: testNumberTrivia)];
+      expectLater(bloc, emitsInOrder(expects));
+
+      //act
+      bloc.add(GetTriviaForRandomNumber());
+    });
+
+    test('should emit [Loading, Error] when getting data fails', () {
+      // arrange
+      when(mockGetRandomNumberTrivia(any))
+          .thenAnswer((realInvocation) async => Left(ServerFailure()));
+
+      // assert later
+      final expects = [Loading(), Error(message: SERVER_FAILURE_MESSAGE)];
+      expectLater(bloc, emitsInOrder(expects));
+
+      // act
+      bloc.add(GetTriviaForRandomNumber());
+    });
+
+    test(
+        'should emit [Loading, Error] when getting data fails with proper message',
+        () {
+      // arrange
+      when(mockGetRandomNumberTrivia(any))
+          .thenAnswer((realInvocation) async => Left(CacheFailure()));
+
+      // assert later
+      final expects = [Loading(), Error(message: CACHE_FAILURE_MESSAGE)];
+      expectLater(bloc, emitsInOrder(expects));
+
+      // act
+      bloc.add(GetTriviaForRandomNumber());
     });
   });
 }
