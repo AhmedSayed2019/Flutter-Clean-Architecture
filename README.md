@@ -1,6 +1,11 @@
-# mycleanarchitecture
+# Flutter Clean Architecture
 
-A new Flutter application.
+I'm trying to build sample app to apply clean code principles.
+
+# Applied concepts:
+. Uncle Bob's Clean Architecture principle
+. Unit Testing
+. Dependency Injection
 
 ## Getting Started
 
