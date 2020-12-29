@@ -1,6 +1,6 @@
 # Flutter Clean Architecture
 
-I'm trying to build sample app to apply clean code principles.
+Am building sample app to apply clean code principles.
 
 # Applied concepts:
 . Uncle Bob's Clean Architecture principle
