@@ -12,6 +12,9 @@ Am building sample app to demonstrate clean code principles with dart.
 
 - [State Management with BLoc](https://pub.dev/packages/flutter_bloc)
 
+# Architecture Proposal
+![Architecture Proposal](https://github.com/ResoCoder/flutter-tdd-clean-architecture-course/blob/master/architecture-proposal.png?raw=true)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
