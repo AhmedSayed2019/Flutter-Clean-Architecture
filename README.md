@@ -1,15 +1,16 @@
 # Flutter Clean Architecture
 
-Am building sample app to apply clean code principles.
+Am building sample app to demonstrate clean code principles with dart.
 
-# Applied concepts:
-. Uncle Bob's Clean Architecture principle
+# Main Concepts:
 
-. Unit Testing
+- [Uncle Bob's Clean Architecture Principles](https://www.oreilly.com/library/view/clean-architecture-a/9780134494272/)
 
-. Dependency Injection
+- Unit Testing
 
-. State Management with BLoc
+- Dependency Injection
+
+- State Management with BLoc
 
 ## Getting Started
 
