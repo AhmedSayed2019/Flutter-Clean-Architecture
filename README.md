@@ -6,11 +6,11 @@ Am building sample app to demonstrate clean code principles with dart.
 
 - [Uncle Bob's Clean Architecture Principles](https://www.oreilly.com/library/view/clean-architecture-a/9780134494272/)
 
-- Unit Testing
+- [Unit Testing](https://flutter.dev/docs/cookbook/testing/unit/introduction#2-create-a-test-file)
 
-- Dependency Injection
+- [Service Locator](https://pub.dev/packages/get_it)
 
-- State Management with BLoc
+- [State Management with BLoc](https://pub.dev/packages/flutter_bloc)
 
 ## Getting Started
 
